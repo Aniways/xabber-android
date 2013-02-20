@@ -31,6 +31,7 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.widget.RemoteViews;
 
+import com.aniways.AniwaysIconInserter;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.LogManager;
 import com.xabber.android.data.OnCloseListener;
@@ -375,7 +376,7 @@ public class NotificationManager implements OnInitializedListener,
 			else
 				text = "";
 			chatViews.setTextViewText(R.id.text2,
-					Emoticons.getSmiledText(application, text));
+					AniwaysIconInserter.getAniwayedText(application, Emoticons.getSmiledText(application, text).toString()));
 			chatViews.setTextViewText(R.id.time,
 					StringUtils.getSmartTimeText(message.getTimestamp()));
 

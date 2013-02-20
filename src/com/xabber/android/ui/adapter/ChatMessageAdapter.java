@@ -33,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.aniways.AniwaysIconInserter;
 import com.xabber.android.data.SettingsManager;
 import com.xabber.android.data.SettingsManager.ChatsDivide;
 import com.xabber.android.data.account.AccountItem;
@@ -237,6 +238,7 @@ public class ChatMessageAdapter extends BaseAdapter implements UpdatableAdapter 
 						R.style.ChatHeader));
 			}
 			Emoticons.getSmiledText(activity.getApplication(), text);
+			AniwaysIconInserter.getAniwayedText(activity.getApplication(), text);
 			if (messageItem.getTag() == null)
 				builder.append(text);
 			else

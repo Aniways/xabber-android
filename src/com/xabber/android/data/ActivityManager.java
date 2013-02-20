@@ -32,6 +32,7 @@ import com.xabber.android.ui.LoadActivity;
 import com.xabber.android.ui.PreferenceEditor;
 import com.xabber.androiddev.R;
 
+
 /**
  * Activity stack manager.
  * 
@@ -39,7 +40,6 @@ import com.xabber.androiddev.R;
  * 
  */
 public class ActivityManager implements OnUnloadListener {
-
 	private static final String EXTRA_TASK_INDEX = "com.xabber.android.data.ActivityManager.EXTRA_TASK_INDEX";
 
 	private static final boolean LOG = true;

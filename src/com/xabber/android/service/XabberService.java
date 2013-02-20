@@ -111,7 +111,9 @@ public class XabberService extends Service {
 				LogManager.w(this, "Unable to invoke startForeground" + e);
 			}
 		} else {
-			setForeground(true);
+			LogManager.w(this, "Unable to invoke startForeground");
+			//TODO: replace back
+			//setForeground(true);
 			try {
 				((android.app.NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE))
 						.notify(NotificationManager.PERSISTENT_NOTIFICATION_ID,
@@ -138,7 +140,9 @@ public class XabberService extends Service {
 				LogManager.w(this, "Unable to invoke stopForeground" + e);
 			}
 		} else {
-			setForeground(false);
+			LogManager.w(this, "Unable to invoke stopForeground");
+			//TODO: replace back
+			//setForeground(false);
 		}
 	}
 

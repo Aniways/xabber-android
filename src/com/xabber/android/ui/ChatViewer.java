@@ -15,6 +15,7 @@
 package com.xabber.android.ui;
 
 import java.io.File;
+
 import java.util.Collection;
 
 import android.app.Dialog;
@@ -23,6 +24,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
+import android.text.Editable;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
@@ -39,6 +41,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
+import com.aniways.AniwaysIconInserter;
 import com.xabber.android.data.ActivityManager;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.LogManager;
@@ -643,7 +646,8 @@ public class ChatViewer extends ManagedActivity implements
 			return;
 		EditText editView = (EditText) actionWithView
 				.findViewById(R.id.chat_input);
-		String text = editView.getText().toString();
+		Editable editableText = editView.getText();
+		String text = AniwaysIconInserter.setAniwayedText(this, editableText);
 		int start = 0;
 		int end = text.length();
 		while (start < end

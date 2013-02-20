@@ -209,4 +209,10 @@ public class DummyCursor implements Cursor {
 		return null;
 	}
 
+	@Override
+	public int getType(int columnIndex) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
