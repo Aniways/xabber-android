@@ -96,7 +96,7 @@ public class ChatViewer extends ManagedActivity implements
 	 * Attention request.
 	 */
 	private static final String ACTION_ATTENTION = "com.xabber.android.data.ATTENTION";
-
+	
 	/**
 	 * Minimum number of new messages to be requested from the server side
 	 * archive.
@@ -647,7 +647,7 @@ public class ChatViewer extends ManagedActivity implements
 		EditText editView = (EditText) actionWithView
 				.findViewById(R.id.chat_input);
 		Editable editableText = editView.getText();
-		String text = AniwaysIconInserter.setAniwayedText(this, editableText);
+		String text = AniwaysIconInserter.replaceAniwaysIconsWithText(editableText);
 		int start = 0;
 		int end = text.length();
 		while (start < end

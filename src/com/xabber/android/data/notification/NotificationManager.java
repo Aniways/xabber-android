@@ -376,7 +376,7 @@ public class NotificationManager implements OnInitializedListener,
 			else
 				text = "";
 			chatViews.setTextViewText(R.id.text2,
-					AniwaysIconInserter.getAniwayedText(application, Emoticons.getSmiledText(application, text).toString()));
+					AniwaysIconInserter.insertAniwaysIconsToText(application, Emoticons.getSmiledText(application, text).toString()));
 			chatViews.setTextViewText(R.id.time,
 					StringUtils.getSmartTimeText(message.getTimestamp()));
 

@@ -23,12 +23,14 @@
         android:label="@string/application_name"
         android:icon="@drawable/ic_launcher"
         android:name="com.xabber.android.data.Application"
+        android:screenOrientation="portrait"
         >
         <activity
             android:label="@string/application_name"
             android:name="com.xabber.android.ui.ContactList"
             android:theme="@style/Theme.NoTitleBar"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,6 +84,7 @@
             android:theme="@style/Theme"
             />
         <activity
+            android:screenOrientation="portrait"
             android:label="@string/chat_list"
             android:name="com.xabber.android.ui.ChatList"
             android:theme="@android:style/Theme.Dialog"
@@ -92,6 +95,7 @@
             android:theme="@android:style/Theme.Dialog"
             />
         <activity
+            android:screenOrientation="portrait"
             android:label="@string/chat_viewer"
             android:name="com.xabber.android.ui.ChatViewer"
             android:theme="@style/Theme.Light.NoTitleBar"
