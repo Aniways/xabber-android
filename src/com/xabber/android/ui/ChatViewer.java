@@ -504,17 +504,17 @@ public class ChatViewer extends ManagedActivity implements
 	private void insertText(String additional) {
 		EditText editView = (EditText) actionWithView
 				.findViewById(R.id.chat_input);
-		String source = editView.getText().toString();
+		Editable source = Editable.Factory.getInstance().newEditable(editView.getText());
 		int selection = editView.getSelectionEnd();
 		if (selection == -1)
 			selection = source.length();
 		else if (selection > source.length())
 			selection = source.length();
-		String before = source.substring(0, selection);
-		String after = source.substring(selection);
-		if (before.length() > 0 && !before.endsWith("\n"))
+		Editable before = (Editable) source.subSequence(0, selection);
+		Editable after = (Editable) source.subSequence(selection, source.length());
+		if (before.length() > 0 && !before.toString().endsWith("\n"))
 			additional = "\n" + additional;
-		editView.setText(before + additional + after);
+		editView.setText(before.append(additional).append(after));
 		editView.setSelection(selection + additional.length());
 	}
 
@@ -647,18 +647,21 @@ public class ChatViewer extends ManagedActivity implements
 		EditText editView = (EditText) actionWithView
 				.findViewById(R.id.chat_input);
 		Editable editableText = editView.getText();
-		String text = AniwaysIconInserter.replaceAniwaysIconsWithText(editableText);
+		
 		int start = 0;
-		int end = text.length();
+		int end = editableText.length();
 		while (start < end
-				&& (text.charAt(start) == ' ' || text.charAt(start) == '\n'))
+				&& (editableText.charAt(start) == ' ' || editableText.charAt(start) == '\n'))
 			start += 1;
 		while (start < end
-				&& (text.charAt(end - 1) == ' ' || text.charAt(end - 1) == '\n'))
+				&& (editableText.charAt(end - 1) == ' ' || editableText.charAt(end - 1) == '\n'))
 			end -= 1;
-		text = text.substring(start, end);
+		String text = editableText.toString().substring(start, end);
 		if ("".equals(text))
 			return;
+		
+		// Important to do this after finishing manipulating the text
+		text = AniwaysIconInserter.replaceAniwaysIconsWithText((Editable)editableText.subSequence(start, end));
 		chatViewerAdapter.setOnTextChangedListener(null);
 		editView.setText("");
 		chatViewerAdapter.setOnTextChangedListener(this);

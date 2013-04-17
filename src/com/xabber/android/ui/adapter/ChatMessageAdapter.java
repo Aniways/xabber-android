@@ -238,7 +238,7 @@ public class ChatMessageAdapter extends BaseAdapter implements UpdatableAdapter 
 						R.style.ChatHeader));
 			}
 			Emoticons.getSmiledText(activity.getApplication(), text);
-			AniwaysIconInserter.insertAniwaysIconsToText(activity.getApplication(), text);
+			//text = AniwaysIconInserter.insertAniwaysIconsToText(activity.getApplication(), text);
 			if (messageItem.getTag() == null)
 				builder.append(text);
 			else
