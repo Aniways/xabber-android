@@ -31,7 +31,6 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.widget.RemoteViews;
 
-import com.aniways.AniwaysIconInserter;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.LogManager;
 import com.xabber.android.data.OnCloseListener;

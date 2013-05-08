@@ -33,7 +33,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.aniways.AniwaysIconInserter;
 import com.xabber.android.data.SettingsManager;
 import com.xabber.android.data.SettingsManager.ChatsDivide;
 import com.xabber.android.data.account.AccountItem;
