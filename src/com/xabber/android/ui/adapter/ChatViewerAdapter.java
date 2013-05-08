@@ -34,7 +34,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.aniways.AniwaysIconInserter;
+import com.aniways.AniwaysIconConverter;
 import com.xabber.android.data.LogManager;
 import com.xabber.android.data.SettingsManager;
 import com.xabber.android.data.SettingsManager.SecurityOtrMode;
@@ -285,7 +285,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 		ChatManager.getInstance().setTyped(
 				chatViewHolder.chatMessageAdapter.getAccount(),
 				chatViewHolder.chatMessageAdapter.getUser(),
-				AniwaysIconInserter.replaceAniwaysIconsWithText(chatViewHolder.input.getText()),
+				AniwaysIconConverter.replaceAniwaysIconsWithText(chatViewHolder.input.getText()),
 				chatViewHolder.input.getSelectionStart(),
 				chatViewHolder.input.getSelectionEnd());
 	}

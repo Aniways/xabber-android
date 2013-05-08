@@ -41,7 +41,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-import com.aniways.AniwaysIconInserter;
+import com.aniways.AniwaysIconConverter;
 import com.xabber.android.data.ActivityManager;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.LogManager;
@@ -661,7 +661,7 @@ public class ChatViewer extends ManagedActivity implements
 			return;
 		
 		// Important to do this after finishing manipulating the text
-		text = AniwaysIconInserter.replaceAniwaysIconsWithText((Editable)editableText.subSequence(start, end));
+		text = AniwaysIconConverter.replaceAniwaysIconsWithText((Editable)editableText.subSequence(start, end));
 		chatViewerAdapter.setOnTextChangedListener(null);
 		editView.setText("");
 		chatViewerAdapter.setOnTextChangedListener(this);
