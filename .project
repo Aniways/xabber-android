@@ -3,6 +3,7 @@
 	<name>ContactList</name>
 	<comment></comment>
 	<projects>
+		<project>Aniways</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
