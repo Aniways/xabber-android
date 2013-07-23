@@ -229,7 +229,9 @@
             </intent-filter>
             <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator" />
         </service>
-        <service android:name="com.aniways.service.AniwaysIntentService"/>
+        <service 
+            android:name="com.aniways.service.AniwaysIntentService"
+            android:process=":AniwaysService" />
 	    <receiver android:name="com.aniways.service.AlarmReceiver">
 	    <intent-filter>
 	        <action android:name="android.intent.action.BOOT_COMPLETED"/>
