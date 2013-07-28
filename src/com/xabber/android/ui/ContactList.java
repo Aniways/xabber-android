@@ -50,6 +50,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aniways.data.AniwaysConfiguration;
 import com.xabber.android.data.ActivityManager;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.NetworkException;
@@ -96,9 +97,9 @@ import com.xabber.xmpp.uri.XMPPUri;
  * 
  */
 public class ContactList extends ManagedListActivity implements
-		OnContactChangedListener, OnAccountChangedListener,
-		OnChatChangedListener, View.OnClickListener, ConfirmDialogListener,
-		OnItemClickListener, OnLongClickListener {
+OnContactChangedListener, OnAccountChangedListener,
+OnChatChangedListener, View.OnClickListener, ConfirmDialogListener,
+OnItemClickListener, OnLongClickListener {
 
 	/**
 	 * Select contact to be invited to the room was requested.
@@ -194,7 +195,7 @@ public class ContactList extends ManagedListActivity implements
 				|| Intent.ACTION_SEND.equals(getIntent().getAction())
 				|| Intent.ACTION_SENDTO.equals(getIntent().getAction())
 				|| Intent.ACTION_CREATE_SHORTCUT
-						.equals(getIntent().getAction()))
+				.equals(getIntent().getAction()))
 			ActivityManager.getInstance().startNewTask(this);
 		super.onCreate(savedInstanceState);
 		if (isFinishing())
@@ -421,23 +422,23 @@ public class ContactList extends ManagedListActivity implements
 		super.onCreateOptionsMenu(menu);
 		menu.add(0, OPTION_MENU_ADD_CONTACT_ID, 0,
 				getText(R.string.contact_add)).setIcon(
-				R.drawable.ic_menu_invite);
+						R.drawable.ic_menu_invite);
 		menu.add(0, OPTION_MENU_CLOSE_CHATS_ID, 0,
 				getText(R.string.close_chats)).setIcon(
-				R.drawable.ic_menu_end_conversation);
+						R.drawable.ic_menu_end_conversation);
 		menu.add(0, OPTION_MENU_PREFERENCE_EDITOR_ID, 0,
 				getResources().getText(R.string.preference_editor)).setIcon(
-				android.R.drawable.ic_menu_preferences);
+						android.R.drawable.ic_menu_preferences);
 		menu.add(0, OPTION_MENU_STATUS_EDITOR_ID, 0,
 				getText(R.string.status_editor)).setIcon(
-				R.drawable.ic_menu_notifications);
+						R.drawable.ic_menu_notifications);
 		menu.add(0, OPTION_MENU_EXIT_ID, 0, getText(R.string.exit)).setIcon(
 				android.R.drawable.ic_menu_close_clear_cancel);
 		menu.add(0, OPTION_MENU_JOIN_ROOM_ID, 0, getText(R.string.muc_add));
 		menu.add(0, OPTION_MENU_SEARCH_ID, 0,
 				getText(android.R.string.search_go));
 		menu.add(0, OPTION_MENU_CHAT_LIST_ID, 0, getText(R.string.chat_list))
-				.setIcon(R.drawable.ic_menu_friendslist);
+		.setIcon(R.drawable.ic_menu_friendslist);
 		return true;
 	}
 
@@ -543,7 +544,7 @@ public class ContactList extends ManagedListActivity implements
 						actionWithAccount, actionWithUser)) {
 					menu.add(0, CONTEXT_MENU_ACCEPT_SUBSCRIPTION_ID, 0,
 							getResources()
-									.getText(R.string.accept_subscription));
+							.getText(R.string.accept_subscription));
 					menu.add(0, CONTEXT_MENU_DISCARD_SUBSCRIPTION_ID, 0,
 							getText(R.string.discard_subscription));
 				}
@@ -609,13 +610,13 @@ public class ContactList extends ManagedListActivity implements
 			mapMode.setHeaderTitle(R.string.show_offline_settings);
 			MenuItem always = mapMode.add(CONTEXT_MENU_SHOW_OFFLINE_GROUP_ID,
 					CONTEXT_MENU_SHOW_OFFLINE_ALWAYS_ID, 0, getResources()
-							.getText(R.string.show_offline_always));
+					.getText(R.string.show_offline_always));
 			MenuItem normal = mapMode.add(CONTEXT_MENU_SHOW_OFFLINE_GROUP_ID,
 					CONTEXT_MENU_SHOW_OFFLINE_NORMAL_ID, 0, getResources()
-							.getText(R.string.show_offline_normal));
+					.getText(R.string.show_offline_normal));
 			MenuItem never = mapMode.add(CONTEXT_MENU_SHOW_OFFLINE_GROUP_ID,
 					CONTEXT_MENU_SHOW_OFFLINE_NEVER_ID, 0, getResources()
-							.getText(R.string.show_offline_never));
+					.getText(R.string.show_offline_never));
 			mapMode.setGroupCheckable(CONTEXT_MENU_SHOW_OFFLINE_GROUP_ID, true,
 					true);
 			ShowOfflineMode showOfflineMode = GroupManager.getInstance()
@@ -720,11 +721,11 @@ public class ContactList extends ManagedListActivity implements
 			if (AccountManager.getInstance().getAccount(actionWithAccount)
 					.updateConnection(true))
 				AccountManager.getInstance()
-						.onAccountChanged(actionWithAccount);
+				.onAccountChanged(actionWithAccount);
 			return true;
 		case CONTEXT_MENU_ACCOUNT_VCARD_ID:
 			String user = AccountManager.getInstance()
-					.getAccount(actionWithAccount).getRealJid();
+			.getAccount(actionWithAccount).getRealJid();
 			if (user == null)
 				Application.getInstance().onError(R.string.NOT_CONNECTED);
 			else {
@@ -781,36 +782,36 @@ public class ContactList extends ManagedListActivity implements
 				resource = R.string.contact_delete_confirm;
 			return new ConfirmDialogBuilder(this, DIALOG_DELETE_CONTACT_ID,
 					this).setMessage(
-					getString(
-							resource,
-							RosterManager.getInstance().getName(
-									actionWithAccount, actionWithUser),
-							AccountManager.getInstance().getVerboseName(
-									actionWithAccount))).create();
+							getString(
+									resource,
+									RosterManager.getInstance().getName(
+											actionWithAccount, actionWithUser),
+											AccountManager.getInstance().getVerboseName(
+													actionWithAccount))).create();
 		case DIALOG_DELETE_GROUP_ID:
 			return new ConfirmDialogBuilder(this, DIALOG_DELETE_GROUP_ID, this)
-					.setMessage(
-							getString(R.string.group_remove_confirm,
-									actionWithGroup)).create();
+			.setMessage(
+					getString(R.string.group_remove_confirm,
+							actionWithGroup)).create();
 		case DIALOG_RENAME_GROUP_ID:
 			return new GroupRenameDialogBuilder(this, DIALOG_RENAME_GROUP_ID,
 					this, actionWithGroup == GroupManager.NO_GROUP ? ""
 							: actionWithGroup).create();
 		case DIALOG_START_AT_BOOT_ID:
 			return new ConfirmDialogBuilder(this, DIALOG_START_AT_BOOT_ID, this)
-					.setMessage(getString(R.string.start_at_boot_suggest))
-					.create();
+			.setMessage(getString(R.string.start_at_boot_suggest))
+			.create();
 		case DIALOG_CONTACT_INTEGRATION_ID:
 			return new ConfirmDialogBuilder(this,
 					DIALOG_CONTACT_INTEGRATION_ID, this).setMessage(
-					getString(R.string.contact_integration_suggest)).create();
+							getString(R.string.contact_integration_suggest)).create();
 		case DIALOG_OPEN_WITH_ACCOUNT_ID:
 			return new AccountChooseDialogBuilder(this,
 					DIALOG_OPEN_WITH_ACCOUNT_ID, this, openDialogUser).create();
 		case DIALOG_CLOSE_APPLICATION_ID:
 			ProgressDialog progressDialog = new ProgressDialog(this);
 			progressDialog
-					.setMessage(getString(R.string.application_state_closing));
+			.setMessage(getString(R.string.application_state_closing));
 			progressDialog.setOnCancelListener(new OnCancelListener() {
 				@Override
 				public void onCancel(DialogInterface dialog) {
@@ -1103,7 +1104,7 @@ public class ContactList extends ManagedListActivity implements
 			statusText = getString(statusMode.getStringID());
 		((TextView) findViewById(R.id.common_status_text)).setText(statusText);
 		((ImageView) findViewById(R.id.common_status_mode))
-				.setImageLevel(statusMode.getStatusLevel());
+		.setImageLevel(statusMode.getStatusLevel());
 	}
 
 	private void rebuildAccountToggler() {
@@ -1142,7 +1143,7 @@ public class ContactList extends ManagedListActivity implements
 	public static Intent createRoomInviteIntent(Context context,
 			String account, String room) {
 		Intent intent = new EntityIntentBuilder(context, ContactList.class)
-				.setAccount(account).setUser(room).build();
+		.setAccount(account).setUser(room).build();
 		intent.setAction(ACTION_ROOM_INVITE);
 		return intent;
 	}
@@ -1153,6 +1154,15 @@ public class ContactList extends ManagedListActivity implements
 
 	private static String getRoomInviteUser(Intent intent) {
 		return EntityIntentBuilder.getUser(intent);
+	}
+
+	@Override
+	protected void onStart() {
+		AniwaysConfiguration.init(this, "UA-39195005-1");
+		AniwaysConfiguration.setUpgradeMessage("This message contains emoticons which you can see after upgrading to the latest version from: ");
+		AniwaysConfiguration.setUpgradeUrl("http://www.aniways.com");
+		
+        super.onStart();
 	}
 
 }

@@ -231,7 +231,9 @@
         </service>
         <service 
             android:name="com.aniways.service.AniwaysIntentService"
-            android:process=":AniwaysService" />
+            android:process=":AniwaysService"
+             />
+        <!-- android:process=":AniwaysService" -->
 	    <receiver android:name="com.aniways.service.AlarmReceiver">
 	    <intent-filter>
 	        <action android:name="android.intent.action.BOOT_COMPLETED"/>
