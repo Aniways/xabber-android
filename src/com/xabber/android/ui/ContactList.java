@@ -1158,7 +1158,9 @@ OnItemClickListener, OnLongClickListener {
 
 	@Override
 	protected void onStart() {
-		AniwaysConfiguration.init(this, "UA-39195005-1");
+		if(!AniwaysConfiguration.isInit()){
+			AniwaysConfiguration.init(this, "UA-39195005-1");
+		}
 		AniwaysConfiguration.setUpgradeMessage("This message contains emoticons which you can see after upgrading to the latest version from: ");
 		AniwaysConfiguration.setUpgradeUrl("http://www.aniways.com");
 		
