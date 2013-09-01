@@ -27,11 +27,14 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Handler;
 
+import com.aniways.Aniways;
+import com.aniways.data.AniwaysConfiguration;
 import com.xabber.android.service.XabberService;
 import com.xabber.androiddev.R;
 
@@ -501,6 +504,13 @@ public class Application extends android.app.Application {
 	 */
 	public void runOnUiThreadDelay(final Runnable runnable, long delayMillis) {
 		handler.postDelayed(runnable, delayMillis);
+	}
+
+	public static void initAniways(Context context) {
+		//AniwaysConfiguration.setLogsVerbosity(Verbosity.Off);
+		if(!Aniways.isInit()){
+			Aniways.init(context);
+		}
 	}
 
 }

@@ -191,6 +191,7 @@ OnItemClickListener, OnLongClickListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Application.initAniways(this);
 		if (Intent.ACTION_VIEW.equals(getIntent().getAction())
 				|| Intent.ACTION_SEND.equals(getIntent().getAction())
 				|| Intent.ACTION_SENDTO.equals(getIntent().getAction())
@@ -1155,16 +1156,4 @@ OnItemClickListener, OnLongClickListener {
 	private static String getRoomInviteUser(Intent intent) {
 		return EntityIntentBuilder.getUser(intent);
 	}
-
-	@Override
-	protected void onStart() {
-		if(!AniwaysConfiguration.isInit()){
-			AniwaysConfiguration.init(this, "UA-39195005-1");
-		}
-		AniwaysConfiguration.setUpgradeMessage("This message contains emoticons which you can see after upgrading to the latest version from: ");
-		AniwaysConfiguration.setUpgradeUrl("http://www.aniways.com");
-		
-        super.onStart();
-	}
-
 }
