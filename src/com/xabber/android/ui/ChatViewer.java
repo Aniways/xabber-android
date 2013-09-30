@@ -42,6 +42,7 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.aniways.Aniways;
+import com.aniways.AniwaysEditText;
 import com.xabber.android.data.ActivityManager;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.LogManager;
@@ -559,6 +560,14 @@ public class ChatViewer extends ManagedActivity implements
 		switch (view.getId()) {
 		case R.id.chat_send:
 			sendMessage();
+			break;
+		case R.id.smileys_button:
+			if(Aniways.canDisplaySmileysPopup()){
+				Aniways.displaySmileysPopup(this.getApplicationContext(), (AniwaysEditText) actionWithView.findViewById(R.id.chat_input), view);
+			}
+			else{
+				Toast.makeText(this.getApplicationContext(), "The button will be available in a few seconds", Toast.LENGTH_LONG).show();
+			}
 			break;
 		case R.id.title:
 			ListView listView = (ListView) actionWithView

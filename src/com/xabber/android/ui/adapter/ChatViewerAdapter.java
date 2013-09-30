@@ -197,6 +197,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 			chatViewHolder = new ChatViewHolder(view, chatMessageAdapter);
 			chatViewHolder.list.setAdapter(chatViewHolder.chatMessageAdapter);
 			chatViewHolder.send.setOnClickListener(onClickListener);
+			chatViewHolder.smileys.setOnClickListener(onClickListener);
 			chatViewHolder.title.setOnClickListener(onClickListener);
 			chatViewHolder.input.setOnKeyListener(onKeyListener);
 			chatViewHolder.input
@@ -324,6 +325,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 		final ImageView avatar;
 		final ImageView security;
 		final View send;
+		final View smileys;
 		final EditText input;
 		final ListView list;
 		final ChatMessageAdapter chatMessageAdapter;
@@ -335,6 +337,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 			avatar = (ImageView) title.findViewById(R.id.avatar);
 			security = (ImageView) title.findViewById(R.id.security);
 			send = view.findViewById(R.id.chat_send);
+			smileys = view.findViewById(R.id.smileys_button);
 			input = (EditText) view.findViewById(R.id.chat_input);
 			list = (ListView) view.findViewById(android.R.id.list);
 			this.chatMessageAdapter = chatMessageAdapter;

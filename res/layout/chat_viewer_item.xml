@@ -70,5 +70,12 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             />
+
+        <Button
+            android:id="@+id/smileys_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text=":)" />
+
     </LinearLayout>
 </LinearLayout>
