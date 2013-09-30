@@ -36,8 +36,8 @@
     <!-- The height (in dips) of Aniways icons in the AniwaysEditText control. Default value is 60. -->
     <integer name="aniways_iconInEditTextSize">60</integer>
 
-    <!-- The height (in dips) of Aniways icons in the AniwaysTextView control. Default value is 80. -->
-    <integer name="aniways_iconInTextViewSize">80</integer>
+    <!-- The height (in dips) of Aniways icons in the AniwaysTextView control. Default value is 60. -->
+    <integer name="aniways_iconInTextViewSize">60</integer>
 
     <!-- The size (in dips) of Aniways icons in the icon suggestion popup. Default value is 80. -->
     <integer name="aniways_iconInSuggestionPopupSize">80</integer>
