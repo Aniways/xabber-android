@@ -35,7 +35,7 @@ import com.xabber.android.data.AbstractTable;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.DatabaseManager;
 import com.xabber.android.data.connection.TLSMode;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 /**
  * Storage with account settings.

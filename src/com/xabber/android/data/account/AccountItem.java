@@ -26,7 +26,7 @@ import com.xabber.android.data.connection.ConnectionItem;
 import com.xabber.android.data.connection.ConnectionState;
 import com.xabber.android.data.connection.ConnectionThread;
 import com.xabber.android.data.connection.TLSMode;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 /**
  * Represent account settings and status.

@@ -76,7 +76,7 @@ import com.xabber.android.ui.dialog.ExportChatDialogBuilder;
 import com.xabber.android.ui.helper.ManagedActivity;
 import com.xabber.android.ui.widget.PageSwitcher;
 import com.xabber.android.ui.widget.PageSwitcher.OnSelectListener;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 /**
  * Chat activity.

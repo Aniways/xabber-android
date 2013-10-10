@@ -14,7 +14,7 @@
  */
 package com.xabber.android.data.account;
 
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 /**
  * Supported account protocols.

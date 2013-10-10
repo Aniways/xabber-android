@@ -15,17 +15,17 @@
 
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xabber.androiddev"
-    android:versionCode="78"
+    package="com.xabber.android.aniwaysdemo"
+    android:versionCode="79"
     android:versionName="@string/application_version"
     android:installLocation="auto"
     >
     <application
-        android:debuggable="true"
         android:label="@string/application_name"
         android:icon="@drawable/ic_launcher"
         android:name="com.xabber.android.data.Application"
         >
+        <activity android:name="com.aniways.billing.AniwaysInAppPurchaseActivity" />
         <activity
             android:label="@string/application_name"
             android:name="com.xabber.android.ui.ContactList"

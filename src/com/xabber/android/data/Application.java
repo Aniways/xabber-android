@@ -34,9 +34,8 @@ import android.os.Build;
 import android.os.Handler;
 
 import com.aniways.Aniways;
-import com.aniways.data.AniwaysConfiguration;
 import com.xabber.android.service.XabberService;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 /**
  * Base entry point.

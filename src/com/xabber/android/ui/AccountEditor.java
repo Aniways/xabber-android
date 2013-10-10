@@ -32,7 +32,7 @@ import com.xabber.android.data.account.ArchiveMode;
 import com.xabber.android.data.connection.TLSMode;
 import com.xabber.android.data.intent.AccountIntentBuilder;
 import com.xabber.android.ui.helper.BaseSettingsActivity;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 public class AccountEditor extends BaseSettingsActivity implements
 		OnPreferenceClickListener {

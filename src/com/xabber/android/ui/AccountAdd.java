@@ -34,7 +34,7 @@ import com.xabber.android.data.account.AccountType;
 import com.xabber.android.data.intent.AccountIntentBuilder;
 import com.xabber.android.ui.adapter.AccountTypeAdapter;
 import com.xabber.android.ui.helper.ManagedActivity;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 public class AccountAdd extends ManagedActivity implements
 		View.OnClickListener, OnItemSelectedListener {

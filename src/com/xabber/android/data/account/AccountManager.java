@@ -41,7 +41,7 @@ import com.xabber.android.data.notification.BaseAccountNotificationProvider;
 import com.xabber.android.data.notification.NotificationManager;
 import com.xabber.android.data.roster.PresenceManager;
 import com.xabber.android.data.roster.RosterManager;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 import com.xabber.xmpp.address.Jid;
 
 /**

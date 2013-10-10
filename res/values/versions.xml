@@ -15,7 +15,7 @@
 <resources>
   <string name="application_name">@string/development_title</string>
   <string name="application_version">@string/development_versions_78</string>
-  <string name="application_package">com.xabber.androiddev</string>
+  <string name="application_package">com.xabber.android.aniwaysdemo</string>
   <string name="client_name">Xabber</string>
 
   <string name="development_versions_1">@string/production_versions_1</string>

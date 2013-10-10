@@ -47,7 +47,7 @@ import com.xabber.android.data.roster.AbstractContact;
 import com.xabber.android.data.roster.RosterManager;
 import com.xabber.android.utils.Emoticons;
 import com.xabber.android.utils.StringUtils;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 /**
  * Adapter for the list of messages in the chat.

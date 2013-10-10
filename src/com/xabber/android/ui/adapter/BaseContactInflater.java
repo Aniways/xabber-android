@@ -32,7 +32,7 @@ import android.widget.TextView;
 import com.xabber.android.data.SettingsManager;
 import com.xabber.android.data.roster.AbstractContact;
 import com.xabber.android.ui.helper.AbstractAvatarInflaterHelper;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 /**
  * Provides views and fills them with data for {@link BaseContactAdapter}.

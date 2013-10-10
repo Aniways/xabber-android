@@ -32,7 +32,7 @@ import com.xabber.android.data.LogManager;
 import com.xabber.android.data.account.OnAccountChangedListener;
 import com.xabber.android.service.XabberService;
 import com.xabber.android.ui.helper.SingleActivity;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 public class LoadActivity extends SingleActivity implements
 		OnAccountChangedListener {

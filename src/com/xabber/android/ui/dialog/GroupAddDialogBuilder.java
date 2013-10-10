@@ -22,7 +22,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 
 public class GroupAddDialogBuilder extends ConfirmDialogBuilder {
 

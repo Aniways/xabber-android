@@ -49,7 +49,7 @@ import com.xabber.android.data.roster.RosterManager;
 import com.xabber.android.ui.helper.AbstractAvatarInflaterHelper;
 import com.xabber.android.ui.helper.ContactTitleInflater;
 import com.xabber.android.ui.widget.PageSwitcher;
-import com.xabber.androiddev.R;
+import com.xabber.android.aniwaysdemo.R;
 import com.xabber.xmpp.address.Jid;
 
 /**
