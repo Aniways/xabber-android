@@ -34,10 +34,10 @@
     <string name="aniways_logsVerbosity">Verbose</string>
 
     <!-- The height (in dips) of Aniways icons in the AniwaysEditText control. Default value is 60. -->
-    <integer name="aniways_iconInEditTextSize">50</integer>
+    <integer name="aniways_iconInEditTextSize">60</integer>
 
     <!-- The height (in dips) of Aniways icons in the AniwaysTextView control. Default value is 60. -->
-    <integer name="aniways_iconInTextViewSize">80</integer>
+    <integer name="aniways_iconInTextViewSize">60</integer>
 
     <!-- The size (in dips) of Aniways icons in the icon suggestion popup. Default value is 80. -->
     <integer name="aniways_iconInSuggestionPopupSize">80</integer>
@@ -79,5 +79,12 @@
 
     <!-- The color to use for highlighting parts of the text that can be replaced with an icon. Defalut value is 0xFF00FF00 (Green). -->
     <integer name="aniways_wordHighlightColor">0xFF00FF00</integer>
+    
+    <!-- Aniways caches its icons on the device. Set this property to 'true' if you would like it to use external storage when available instead
+    	 of internal storage. This might reduce performance somewhat, and also mean that if the external storage is unavailable the user will
+    	 not see the icons, but it might prove useful if you target users with very low end devices on which internal storage space is very limited.
+    	 Default value is 'false'.
+    -->
+    <bool name="aniways_try_using_external_storage_for_icon_caching">true</bool>
 
 </resources>
