@@ -155,7 +155,9 @@ public class ChatViewer extends ManagedActivity implements
 		super.onCreate(savedInstanceState);
 		if (isFinishing())
 			return;
-
+		
+		Application.initAniways(this);
+		
 		Intent intent = getIntent();
 		String account = getAccount(intent);
 		String user = getUser(intent);
@@ -563,7 +565,7 @@ public class ChatViewer extends ManagedActivity implements
 			break;
 		case R.id.smileys_button:
 			if(Aniways.canDisplaySmileysPopup()){
-				Aniways.displaySmileysPopup(this.getApplicationContext(), (AniwaysEditText) actionWithView.findViewById(R.id.chat_input), view);
+				Aniways.displaySmileysPopup(view.getContext(), (AniwaysEditText) actionWithView.findViewById(R.id.chat_input), view);
 			}
 			else{
 				Toast.makeText(this.getApplicationContext(), "The button will be available in a few seconds", Toast.LENGTH_LONG).show();
