@@ -78,4 +78,9 @@
             android:text=":)" />
 
     </LinearLayout>
+    <include
+        android:id="@+id/aniways_emoticons_button_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/aniways_emoticons_button_placeholder" />
 </LinearLayout>

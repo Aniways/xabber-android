@@ -71,9 +71,9 @@ public class ContactTitleInflater {
 		nameView.setText(abstractContact.getName());
 		statusModeView.setImageLevel(abstractContact.getStatusMode()
 				.getStatusLevel());
-		titleView.getBackground().setLevel(
-				AccountManager.getInstance().getColorLevel(
-						abstractContact.getAccount()));
+		//titleView.getBackground().setLevel(
+		//		AccountManager.getInstance().getColorLevel(
+		//				abstractContact.getAccount()));
 		avatarView.setImageDrawable(abstractContact.getAvatar());
 		ChatState chatState = ChatStateManager.getInstance().getChatState(
 				abstractContact.getAccount(), abstractContact.getUser());

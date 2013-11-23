@@ -30,11 +30,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 import com.aniways.Aniways;
+import com.aniways.AniwaysEmoticonsButton;
 import com.xabber.android.data.LogManager;
 import com.xabber.android.data.SettingsManager;
 import com.xabber.android.data.SettingsManager.SecurityOtrMode;
@@ -198,6 +200,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 			chatViewHolder.list.setAdapter(chatViewHolder.chatMessageAdapter);
 			chatViewHolder.send.setOnClickListener(onClickListener);
 			chatViewHolder.smileys.setOnClickListener(onClickListener);
+			new AniwaysEmoticonsButton().makeButtonAniwaysEmoticonsButton(chatViewHolder.smileys, chatViewHolder.smileysPopupPlaceholder, (LinearLayout)view);
 			chatViewHolder.title.setOnClickListener(onClickListener);
 			chatViewHolder.input.setOnKeyListener(onKeyListener);
 			chatViewHolder.input
@@ -326,6 +329,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 		final ImageView security;
 		final View send;
 		final View smileys;
+		final LinearLayout smileysPopupPlaceholder;
 		final EditText input;
 		final ListView list;
 		final ChatMessageAdapter chatMessageAdapter;
@@ -338,6 +342,9 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 			security = (ImageView) title.findViewById(R.id.security);
 			send = view.findViewById(R.id.chat_send);
 			smileys = view.findViewById(R.id.smileys_button);
+			smileysPopupPlaceholder = (LinearLayout)view.findViewById(R.id.aniways_emoticons_button_placeholder);
+			
+			
 			input = (EditText) view.findViewById(R.id.chat_input);
 			list = (ListView) view.findViewById(android.R.id.list);
 			this.chatMessageAdapter = chatMessageAdapter;
