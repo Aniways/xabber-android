@@ -18,7 +18,7 @@
     package="com.xabber.android.aniwaysdemo"
     android:versionCode="86"
     android:versionName="@string/application_version"
-    android:installLocation="auto"
+    android:installLocation="preferExternal"
     >
     <!-- android:installLocation=["auto" | "internalOnly" | "preferExternal"] -->
     <application
@@ -26,7 +26,7 @@
         android:icon="@drawable/ic_launcher"
         android:name="com.xabber.android.data.Application"
         >
-        <activity android:name="com.aniways.billing.AniwaysCreditsStoreActivity" android:theme="@style/Theme.Aniways.Transparent" />
+        <activity android:name="com.aniways.billing.AniwaysCreditsStoreActivity" android:theme="@style/Theme.Aniways.Transparent" android:launchMode="singleTop" />
         <activity
             android:label="@string/application_name"
             android:name="com.xabber.android.ui.ContactList"
@@ -96,6 +96,7 @@
             android:name="com.xabber.android.ui.OccupantList"
             android:theme="@android:style/Theme.Dialog"
             />
+        <!-- This is where the Aniways stuff happens -->
         <activity
             android:label="@string/chat_viewer"
             android:name="com.xabber.android.ui.ChatViewer"
