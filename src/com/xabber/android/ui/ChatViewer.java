@@ -563,13 +563,15 @@ public class ChatViewer extends ManagedActivity implements
 		case R.id.chat_send:
 			sendMessage();
 			break;
-		case R.id.smileys_button:
+		case R.id.emoticons_button:
+			/*
 			if(Aniways.canDisplaySmileysPopup()){
 				Aniways.displaySmileysPopup(view.getContext(), (AniwaysEditText) actionWithView.findViewById(R.id.chat_input), view);
 			}
 			else{
 				Toast.makeText(this.getApplicationContext(), "The button will be available in a few seconds", Toast.LENGTH_LONG).show();
 			}
+			*/
 			break;
 		case R.id.title:
 			ListView listView = (ListView) actionWithView
