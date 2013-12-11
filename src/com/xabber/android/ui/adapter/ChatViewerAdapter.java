@@ -29,6 +29,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -201,7 +202,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 			chatViewHolder.list.setAdapter(chatViewHolder.chatMessageAdapter);
 			chatViewHolder.send.setOnClickListener(onClickListener);
 			chatViewHolder.smileys.setOnClickListener(onClickListener);
-			new AniwaysEmoticonsButtonMaker().makeButtonAniwaysEmoticonsButton(chatViewHolder.smileys, chatViewHolder.smileysPopupPlaceholder, (LinearLayout)view, (AniwaysEditText) chatViewHolder.input);
+			Aniways.makeAniwaysEmoticonsButton((ImageButton)chatViewHolder.smileys, chatViewHolder.smileysPopupPlaceholder, (LinearLayout)view, (AniwaysEditText) chatViewHolder.input);
 			chatViewHolder.title.setOnClickListener(onClickListener);
 			chatViewHolder.input.setOnKeyListener(onKeyListener);
 			chatViewHolder.input

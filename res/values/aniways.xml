@@ -5,7 +5,7 @@
         !!Mandatory config value!!
         Replace placeholder ID with your Aniways App Id
     -->
-    <string name="aniways_appId">UA-39195005-2</string>
+    <string name="aniways_appId">ADF4454FDSDF543DF</string>
 
     <!--
        !!Mandatory config value!!
