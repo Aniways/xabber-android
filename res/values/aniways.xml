@@ -41,6 +41,11 @@
 
     <!-- The size (in dips) of Aniways icons in the icon suggestion popup. Default value is 80. -->
     <integer name="aniways_iconInSuggestionPopupSize">80</integer>
+    
+    <!-- Whether to use smaller icons in the 'icons on demand' popup and have 3 rows and 6 columns 
+    	 instead of the default 2 rows and 4 columns.
+	 	 Default value is 'false'.  -->
+    <bool name="aniways_useSmallerIconsInIconsOnDemendPopup">false</bool>
 
     <!--
        The number of times that the user sees highlighted text (suggested to be replaced with an icon) without clicking on it until the 
