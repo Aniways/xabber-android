@@ -50,7 +50,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aniways.data.AniwaysConfiguration;
 import com.xabber.android.data.ActivityManager;
 import com.xabber.android.data.Application;
 import com.xabber.android.data.NetworkException;
