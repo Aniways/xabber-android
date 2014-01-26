@@ -29,16 +29,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 import com.aniways.Aniways;
-import com.aniways.AniwaysEditText;
-import com.aniways.emoticons.button.AniwaysEmoticonsButtonMaker;
 import com.xabber.android.data.LogManager;
 import com.xabber.android.data.SettingsManager;
 import com.xabber.android.data.SettingsManager.SecurityOtrMode;
@@ -201,8 +197,8 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 			chatViewHolder = new ChatViewHolder(view, chatMessageAdapter);
 			chatViewHolder.list.setAdapter(chatViewHolder.chatMessageAdapter);
 			chatViewHolder.send.setOnClickListener(onClickListener);
-			chatViewHolder.smileys.setOnClickListener(onClickListener);
-			Aniways.makeAniwaysEmoticonsButton((ImageButton)chatViewHolder.smileys, chatViewHolder.smileysPopupPlaceholder, (LinearLayout)view, (AniwaysEditText) chatViewHolder.input);
+			//chatViewHolder.smileys.setOnClickListener(onClickListener);
+			//Aniways.makeAniwaysEmoticonsButton((ImageButton)chatViewHolder.smileys, chatViewHolder.smileysPopupPlaceholder, (LinearLayout)view, (AniwaysEditText) chatViewHolder.input);
 			chatViewHolder.title.setOnClickListener(onClickListener);
 			chatViewHolder.input.setOnKeyListener(onKeyListener);
 			chatViewHolder.input
@@ -291,7 +287,7 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 		ChatManager.getInstance().setTyped(
 				chatViewHolder.chatMessageAdapter.getAccount(),
 				chatViewHolder.chatMessageAdapter.getUser(),
-				Aniways.replaceAniwaysIconsWithText(chatViewHolder.input.getText()),
+				Aniways.encodeMessage(chatViewHolder.input.getText()),
 				chatViewHolder.input.getSelectionStart(),
 				chatViewHolder.input.getSelectionEnd());
 	}
@@ -330,8 +326,8 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 		final ImageView avatar;
 		final ImageView security;
 		final View send;
-		final View smileys;
-		final LinearLayout smileysPopupPlaceholder;
+		//final View smileys;
+		//final LinearLayout smileysPopupPlaceholder;
 		final EditText input;
 		final ListView list;
 		final ChatMessageAdapter chatMessageAdapter;
@@ -343,8 +339,8 @@ public class ChatViewerAdapter extends BaseAdapter implements SaveStateAdapter,
 			avatar = (ImageView) title.findViewById(R.id.avatar);
 			security = (ImageView) title.findViewById(R.id.security);
 			send = view.findViewById(R.id.chat_send);
-			smileys = view.findViewById(R.id.emoticons_button);
-			smileysPopupPlaceholder = (LinearLayout)view.findViewById(R.id.aniways_emoticons_button_placeholder);
+			//smileys = view.findViewById(R.id.emoticons_button);
+			//smileysPopupPlaceholder = (LinearLayout)view.findViewById(R.id.aniways_emoticons_button_placeholder);
 			
 			
 			input = (EditText) view.findViewById(R.id.chat_input);
