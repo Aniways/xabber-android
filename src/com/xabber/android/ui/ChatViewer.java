@@ -674,7 +674,7 @@ public class ChatViewer extends ManagedActivity implements
 			return;
 		
 		// Important to do this after finishing manipulating the text
-		text = Aniways.encodeMessage((Editable)editableText.subSequence(start, end));
+		text = Aniways.replaceAniwaysIconsWithText((Editable)editableText.subSequence(start, end));
 		chatViewerAdapter.setOnTextChangedListener(null);
 		editView.setText("");
 		chatViewerAdapter.setOnTextChangedListener(this);

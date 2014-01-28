@@ -45,6 +45,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.android.vending.BILLING" />
     
     <!-- android:installLocation=["auto" | "internalOnly" | "preferExternal"] -->
     <application
@@ -52,6 +53,7 @@
         android:icon="@drawable/ic_launcher"
         android:name="com.xabber.android.data.Application"
         >
+        <activity android:name="com.aniways.billing.AniwaysCreditsStoreActivity" android:theme="@style/Theme.Aniways.Transparent" android:launchMode="singleTop" />
         <activity
             android:label="@string/application_name"
             android:name="com.xabber.android.ui.ContactList"
@@ -256,6 +258,21 @@
             </intent-filter>
             <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/authenticator" />
         </service>
+        <service 
+            android:name="com.aniways.service.AniwaysIntentService"
+            android:process=":AniwaysService"
+             />
+        <service 
+            android:name="com.aniways.analytics.service.AniwaysAnalyticsService"
+            android:process=":AniwaysService"
+             />
+        <!-- android:process=":AniwaysService" -->
+	    <receiver android:name="com.aniways.service.AlarmReceiver">
+	    <intent-filter>
+	        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+	        </intent-filter>
+	        
+	    </receiver>
         <receiver
             android:name="com.xabber.android.receiver.BootReceiver">
             <intent-filter>
