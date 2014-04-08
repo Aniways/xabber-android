@@ -5,7 +5,7 @@
         !!Mandatory config value!!
         Replace placeholder ID with your Aniways App Id
     -->
-    <string name="aniways_appId">ADF4454FDSDF543DF</string>
+    <string name="aniways_appId">ADF4454FDSDF543DFNEWVER</string>
 
     <!--
        !!Mandatory config value!!
@@ -32,15 +32,17 @@
 	   Default value is 'Verbose'.
     -->
     <string name="aniways_logsVerbosity">Verbose</string>
+    
+    <string name="aniways_iconEncodingMethod">Invisible</string>
 
     <!-- The height (in dips) of Aniways icons in the AniwaysEditText control. Default value is 60. -->
-    <integer name="aniways_iconInEditTextSize">60</integer>
+    <integer name="aniways_iconInEditTextSize">30</integer>
 
     <!-- The height (in dips) of Aniways icons in the AniwaysTextView control. Default value is 60. -->
-    <integer name="aniways_iconInTextViewSize">60</integer>
+    <integer name="aniways_iconInTextViewSize">30</integer>
 
     <!-- The size (in dips) of Aniways icons in the icon suggestion popup. Default value is 80. -->
-    <integer name="aniways_iconInSuggestionPopupSize">80</integer>
+    <integer name="aniways_iconInSuggestionPopupSize">60</integer>
     
     <!-- Whether to use smaller icons in the 'icons on demand' popup and have 3 rows and 6 columns 
     	 instead of the default 2 rows and 4 columns.
