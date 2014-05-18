@@ -72,16 +72,29 @@ public class BlurLinearLayout extends LinearLayout {
         super.onDetachedFromWindow();
         mBlurRenderer.onDetachedFromWindow();
     }
+    
+    @Override
+    public void draw(Canvas canvas){
+    	
+    	if(mBlurRenderer.isOffscreenCanvas(canvas)){
+    		super.draw(canvas);
+    	}
+    	
+    	else{
+    		mBlurRenderer.drawToCanvas(canvas);
+    	}
+    	dispatchDraw(canvas);
+    }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
         // If this is off-screen pass apply blur only
         if (mBlurRenderer.isOffscreenCanvas(canvas)) {
-            mBlurRenderer.applyBlur();
+            //mBlurRenderer.applyBlur();
         }
         // Otherwise draw blurred background image and continue to child views
         else {
-            mBlurRenderer.drawToCanvas(canvas);
+            //mBlurRenderer.drawToCanvas(canvas);
             super.dispatchDraw(canvas);
         }
         

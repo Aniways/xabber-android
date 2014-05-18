@@ -21,6 +21,9 @@ import fi2.harism.anndblur.ScriptField_RadiusStruct;
 import fi2.harism.anndblur.ScriptField_SizeStruct;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -30,6 +33,7 @@ import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.Element;
@@ -66,6 +70,8 @@ public class BlurRenderer {
     private Allocation mAllocationBitmap;
     private Allocation mAllocationRgb;
     private Allocation mAllocationDv;
+
+	private Bitmap mUnblured;
 
     /**
      * Default constructor
@@ -178,9 +184,31 @@ public class BlurRenderer {
      * Draws off-screen bitmap into current canvas
      */
     public void drawToCanvas(Canvas canvas) {
-        if (mBitmap != null) {
+        
+    	
+    	
+    	if (mBitmap != null) {
+    		
+    		BitmapShader shader;
+            shader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            Paint paint = new Paint();
+            paint.setAntiAlias(true);
+            paint.setShader(shader);
+
+            RectF rect = new RectF(0.0f, 0.0f, mBitmap.getWidth(), mBitmap.getHeight());
+
+            canvas.drawBitmap(mUnblured, canvas.getMatrix(), new Paint());
+            canvas.drawRoundRect(rect, 24, 24, paint);
+            
+            Paint mBorderPaint = new Paint();
+            mBorderPaint.setStyle(Paint.Style.STROKE);
+            mBorderPaint.setAntiAlias(true);
+            mBorderPaint.setColor(Color.BLACK);
+            mBorderPaint.setStrokeWidth(2);
+            //canvas.drawRoundRect(rect, 24, 24, mBorderPaint);
+    		
             // Draw off-screen bitmap using inverse of the scale matrix
-            canvas.drawBitmap(mBitmap, mMatrixScaleInv, null);
+            //canvas.drawBitmap(mBitmap, mMatrixScaleInv, null);
         }
     }
 
@@ -218,8 +246,7 @@ public class BlurRenderer {
             mSizeStruct.height = height;
             // Due to adjusting width into multiple of 4 calculate scale matrix
             // only here
-            mMatrixScale.setScale((float) width / mView.getWidth(),
-                    (float) height / mView.getHeight());
+            mMatrixScale.setScale((float) width / mView.getWidth(),(float) height / mView.getHeight());
             mMatrixScale.invert(mMatrixScaleInv);
         //}
 
@@ -244,84 +271,38 @@ public class BlurRenderer {
         LayoutParams params = (LayoutParams) rootViewPopup.getLayoutParams();
         
         int b4 = mCanvas.save();
+        mUnblured =  Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas();
+        c.setBitmap(mUnblured);
         
-        Path p = new Path();
-        RectF r = new RectF();
-        r.left = 0;
-        r.right = mView.getWidth();
-        r.bottom = mView.getHeight();
-        r.top = 0;
-        p.addRoundRect(r, 60f,  60f, Direction.CW);
-        
-        //mCanvas.clipPath(p);
-        
-        
-        
-        //Drawable bg = mView.getBackground();
-        //bg.setBounds(0, 0, mView.getRight(), mView.getBottom());
-        //bg.draw(mCanvas);
-        
-        
-        
-        //mCanvas.translate(-mLocationInWindow[0], -mLocationInWindow[1]);
         mCanvas.translate(-params.x, -(params.y + 0));
-        Canvas tmp = new Canvas();
-        Bitmap b = Bitmap.createBitmap(mView.getWidth(), mView.getHeight(),
-                Bitmap.Config.ARGB_8888);
-        
-        
-        tmp.setBitmap(b);
-        int tmpi = tmp.save();
-        tmp.translate(-params.x, -(params.y + 0));
-        // Clip rect is the same as we have
-        // TODO: Why does this not work on API 18?
-        // mCanvas.clipRect(mRectVisibleGlobal);
-        // Save current canvas state
+        c.translate(-params.x, -(params.y + 0));
         mCanvas.save();
+        c.save();
         
         
         // Start drawing from the root view
         View rootView = ((View)mView.getTag()).getRootView();
-        //View rootView = mView.getRootView();
         
         rootView.draw(mCanvas);
-        rootView.draw(tmp);
-        
+        rootView.draw(c);
         mCanvas.restoreToCount(b4);
         
         mView.draw(mCanvas);
         
-        //this.applyBlur();
+        Bitmap unblured = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        //Bitmap unblured = mBitmap.copy(Config.ARGB_8888, true);
         
-        tmp.restoreToCount(tmpi);
-        
-        Paint paint = new Paint();
-        paint.setStyle(Style.STROKE);
-        paint.setStrokeWidth(4);
-        //tmp.drawPath(p, paint);
-        
-        p = new Path();
-        r = new RectF();
-        r.left = 1;
-        r.right = mView.getWidth() - 2;
-        r.bottom = mView.getHeight() - 2;
-        r.top = 1;
-        p.addRoundRect(r, 40f,  40f, Direction.CW);
-        
-        tmp.clipPath(p);
-        
-        Paint pa = new Paint();
-        pa.setFlags(Paint.ANTI_ALIAS_FLAG);
-        
-        tmp.drawBitmap(mBitmap, 0, 0, pa);
+        this.applyBlur();
         
         
         
-        //tmp.drawColor(Color.RED);
-        mBitmap = b;
+
         
         
-        
+      
+        //mBitmap = unblured;
+         
     }
 
     /**
