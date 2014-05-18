@@ -141,48 +141,44 @@ public class PreferenceEditor extends ManagedPreferenceActivity implements
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		super.onCreateDialog(id);
-		switch (id) {
-		case R.string.cache_clear_warning:
+		if (id == R.string.cache_clear_warning) {
 			return new ConfirmDialogBuilder(this, R.string.cache_clear_warning,
 					this).setMessage(R.string.cache_clear_warning).create();
-		case R.string.security_clear_certificate_warning:
+		} else if (id == R.string.security_clear_certificate_warning) {
 			return new ConfirmDialogBuilder(this,
 					R.string.security_clear_certificate_warning, this)
 					.setMessage(R.string.security_clear_certificate_warning)
 					.create();
-		case R.string.contacts_reset_offline_warning:
+		} else if (id == R.string.contacts_reset_offline_warning) {
 			return new ConfirmDialogBuilder(this,
 					R.string.contacts_reset_offline_warning, this).setMessage(
 					R.string.contacts_reset_offline_warning).create();
-		case R.string.application_state_closing:
+		} else if (id == R.string.application_state_closing) {
 			ProgressDialog progressDialog = new ProgressDialog(this);
 			progressDialog
 					.setMessage(getString(R.string.application_state_closing));
 			progressDialog.setCancelable(false);
 			progressDialog.setIndeterminate(true);
 			return progressDialog;
-		default:
+		} else {
 			return null;
 		}
 	}
 
 	@Override
 	public void onAccept(DialogBuilder dialogBuilder) {
-		switch (dialogBuilder.getDialogId()) {
-		case R.string.cache_clear_warning:
+		int dialogId = dialogBuilder.getDialogId();
+		if (dialogId == R.string.cache_clear_warning) {
 			AccountManager.getInstance()
 					.setStatus(StatusMode.unavailable, null);
 			((Application) getApplication()).requestToClear();
 			Application.getInstance().requestToClose();
 			showDialog(R.string.application_state_closing);
-			break;
-		case R.string.security_clear_certificate_warning:
+		} else if (dialogId == R.string.security_clear_certificate_warning) {
 			CertificateManager.getInstance().removeCertificates();
 			ConnectionManager.getInstance().updateConnections(true);
-			break;
-		case R.string.contacts_reset_offline_warning:
+		} else if (dialogId == R.string.contacts_reset_offline_warning) {
 			GroupManager.getInstance().resetShowOfflineModes();
-			break;
 		}
 	}
 

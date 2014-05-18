@@ -168,8 +168,8 @@ public class MUCEditor extends ManagedActivity implements View.OnClickListener,
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.ok:
+		int id = view.getId();
+		if (id == R.id.ok) {
 			String account = (String) accountView.getSelectedItem();
 			if (account == null) {
 				Toast.makeText(this, getString(R.string.EMPTY_ACCOUNT),
@@ -208,9 +208,7 @@ public class MUCEditor extends ManagedActivity implements View.OnClickListener,
 			MUCManager.getInstance()
 					.createRoom(account, room, nick, password, join);
 			finish();
-			break;
-		default:
-			break;
+		} else {
 		}
 	}
 

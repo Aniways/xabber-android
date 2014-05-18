@@ -837,46 +837,36 @@ OnItemClickListener, OnLongClickListener {
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.common_status_mode:
+		int id = view.getId();
+		if (id == R.id.common_status_mode) {
 			startActivity(StatusEditor.createIntent(this));
-			break;
-		case R.id.button: // Hint button
-			switch ((Integer) view.getTag()) {
-			case R.string.application_action_no_online:
+		} else if (id == R.id.button) {
+			Integer tag = (Integer) view.getTag();
+			if (tag == R.string.application_action_no_online) {
 				SettingsManager.setContactsShowOffline(true);
 				contactListAdapter.onChange();
-				break;
-			case R.string.application_action_no_contacts:
+			} else if (tag == R.string.application_action_no_contacts) {
 				startActivity(ContactAdd.createIntent(this));
-				break;
-			case R.string.application_action_waiting:
+			} else if (tag == R.string.application_action_waiting) {
 				ConnectionManager.getInstance().updateConnections(true);
-				break;
-			case R.string.application_action_offline:
+			} else if (tag == R.string.application_action_offline) {
 				AccountManager.getInstance().setStatus(StatusMode.available,
 						null);
-				break;
-			case R.string.application_action_disabled:
+			} else if (tag == R.string.application_action_disabled) {
 				startActivity(AccountList.createIntent(this));
-				break;
-			case R.string.application_action_empty:
+			} else if (tag == R.string.application_action_empty) {
 				startActivity(AccountAdd.createIntent(this));
-				break;
-			default:
-				break;
+			} else {
 			}
 			updateStatusBar();
-			break;
-		case R.id.back_button: // Xabber icon button
-		case R.id.common_status_text:
-		case android.R.id.title:
+		} else if (id == R.id.back_button
+				|| id == R.id.common_status_text
+				|| id == android.R.id.title) {
 			scrollUp();
-			break;
-		default:
+		} else {
 			String account = (String) accountToggleAdapter.getItemForView(view);
 			if (account == null) // Check for tap on account in the title
-				break;
+				return;
 			ListView listView = getListView();
 			if (!SettingsManager.contactsShowAccounts()) {
 				if (AccountManager.getInstance().getAccounts().size() < 2) {
@@ -905,7 +895,6 @@ OnItemClickListener, OnLongClickListener {
 					}
 				}
 			}
-			break;
 		}
 	}
 
@@ -931,8 +920,8 @@ OnItemClickListener, OnLongClickListener {
 
 	@Override
 	public boolean onLongClick(View view) {
-		switch (view.getId()) {
-		case R.id.common_status_text:
+		int id = view.getId();
+		if (id == R.id.common_status_text) {
 			startActivity(StatusEditor.createIntent(this));
 			return true;
 		}

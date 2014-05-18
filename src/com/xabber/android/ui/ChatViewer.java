@@ -559,28 +559,16 @@ public class ChatViewer extends ManagedActivity implements
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.chat_send:
+		int id = view.getId();
+		if (id == R.id.chat_send) {
 			sendMessage();
-			break;
-		case R.id.emoticons_button:
-			/*
-			if(Aniways.canDisplaySmileysPopup()){
-				Aniways.displaySmileysPopup(view.getContext(), (AniwaysEditText) actionWithView.findViewById(R.id.chat_input), view);
-			}
-			else{
-				Toast.makeText(this.getApplicationContext(), "The button will be available in a few seconds", Toast.LENGTH_LONG).show();
-			}
-			*/
-			break;
-		case R.id.title:
+		} else if (id == R.id.emoticons_button) {
+		} else if (id == R.id.title) {
 			ListView listView = (ListView) actionWithView
 					.findViewById(android.R.id.list);
 			int size = listView.getCount();
 			if (size > 0)
 				listView.setSelection(size - 1);
-		default:
-			break;
 		}
 	}
 

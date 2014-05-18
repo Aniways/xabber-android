@@ -188,14 +188,12 @@ public class FingerprintViewer extends ManagedActivity implements
 
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		switch (buttonView.getId()) {
-		case R.id.verified:
+		int id = buttonView.getId();
+		if (id == R.id.verified) {
 			if (!isUpdating)
 				OTRManager.getInstance().setVerify(account, user,
 						remoteFingerprint, isChecked);
-			break;
-		default:
-			break;
+		} else {
 		}
 	}
 
@@ -213,48 +211,43 @@ public class FingerprintViewer extends ManagedActivity implements
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.scan:
+		int id = view.getId();
+		if (id == R.id.scan) {
 			wrapInstallDialog(integrator
 					.initiateScan(IntentIntegrator.QR_CODE_TYPES));
-			break;
-		case R.id.show:
+		} else if (id == R.id.show) {
 			wrapInstallDialog(integrator.shareText(localFingerprint));
-			break;
-		case R.id.copy:
+		} else if (id == R.id.copy) {
 			((ClipboardManager) getSystemService(CLIPBOARD_SERVICE))
 					.setText(((TextView) findViewById(R.id.otr_local_fingerprint))
 							.getText());
-			break;
-		default:
-			break;
+		} else {
 		}
 	}
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
-		switch (id) {
-		case R.string.zxing_install_message:
+		if (id == R.string.zxing_install_message) {
 			return new ConfirmDialogBuilder(this, id, this).setMessage(
 					R.string.zxing_install_message).create();
-		case R.string.zxing_install_fail:
+		} else if (id == R.string.zxing_install_fail) {
 			return new NotificationDialogBuilder(this, id, this).setMessage(
 					R.string.zxing_install_fail).create();
-		case R.string.action_otr_smp_verified:
+		} else if (id == R.string.action_otr_smp_verified) {
 			return new NotificationDialogBuilder(this, id, this).setMessage(
 					R.string.action_otr_smp_verified).create();
-		case R.string.action_otr_smp_unverified:
+		} else if (id == R.string.action_otr_smp_unverified) {
 			return new NotificationDialogBuilder(this, id, this).setMessage(
 					R.string.action_otr_smp_unverified).create();
-		default:
+		} else {
 			return super.onCreateDialog(id);
 		}
 	}
 
 	@Override
 	public void onAccept(DialogBuilder dialogBuilder) {
-		switch (dialogBuilder.getDialogId()) {
-		case R.string.zxing_install_message:
+		int dialogId = dialogBuilder.getDialogId();
+		if (dialogId == R.string.zxing_install_message) {
 			Uri uri = Uri.parse("market://details?id="
 					+ IntentIntegrator.BS_PACKAGE);
 			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -262,11 +255,9 @@ public class FingerprintViewer extends ManagedActivity implements
 				startActivity(intent);
 			} catch (ActivityNotFoundException anfe) {
 				showDialog(R.string.zxing_install_fail);
-				break;
+				return;
 			}
-			break;
-		default:
-			break;
+		} else {
 		}
 	}
 

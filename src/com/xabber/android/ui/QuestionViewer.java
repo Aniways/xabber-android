@@ -137,8 +137,8 @@ public class QuestionViewer extends ManagedActivity implements
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.send:
+		int id = view.getId();
+		if (id == R.id.send) {
 			String question = showQuestion ? questionView.getText().toString()
 					: null;
 			String answer = ((TextView) findViewById(R.id.answer)).getText()
@@ -154,17 +154,15 @@ public class QuestionViewer extends ManagedActivity implements
 				Application.getInstance().onError(e);
 			}
 			finish();
-			break;
-		case R.id.cancel:
+		} else if (id == R.id.cancel) {
 			try {
 				OTRManager.getInstance().abortSmp(account, user);
 			} catch (NetworkException e) {
 				Application.getInstance().onError(e);
 			}
 			finish();
-		default:
-			break;
 		}
+		
 	}
 
 	private void update() {

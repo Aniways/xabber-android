@@ -156,8 +156,8 @@ public class ContactAdd extends GroupListActivity implements
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.ok:
+		int id = view.getId();
+		if (id == R.id.ok) {
 			String user = userView.getText().toString();
 			if ("".equals(user)) {
 				Toast.makeText(this, getString(R.string.EMPTY_USER_NAME),
@@ -182,9 +182,6 @@ public class ContactAdd extends GroupListActivity implements
 			}
 			MessageManager.getInstance().openChat(account, user);
 			finish();
-			break;
-		default:
-			break;
 		}
 	}
 

@@ -210,16 +210,14 @@ public class StatusEditor extends ManagedListActivity implements
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.ok:
+		int id = v.getId();
+		if (id == R.id.ok) {
 			StatusMode statusMode = (StatusMode) statusModeView
 					.getSelectedItem();
 			String statusText = statusTextView.getText().toString();
 			setStatus(statusMode, statusText);
 			finish();
-			break;
-		default:
-			break;
+		} else {
 		}
 	}
 

@@ -126,8 +126,8 @@ public class AccountAdd extends ManagedActivity implements
 
 	@Override
 	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.ok:
+		int id = view.getId();
+		if (id == R.id.ok) {
 			AccountType accountType = (AccountType) accountTypeView
 					.getSelectedItem();
 			if (accountType.getProtocol().isOAuth()) {
@@ -152,9 +152,7 @@ public class AccountAdd extends ManagedActivity implements
 				setResult(RESULT_OK, createAuthenticatorResult(this, account));
 				finish();
 			}
-			break;
-		default:
-			break;
+		} else {
 		}
 	}
 
