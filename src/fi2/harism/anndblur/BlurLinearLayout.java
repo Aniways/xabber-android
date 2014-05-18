@@ -81,6 +81,7 @@ public class BlurLinearLayout extends LinearLayout {
     	}
     	
     	else{
+    		
     		mBlurRenderer.drawToCanvas(canvas);
     	}
     	dispatchDraw(canvas);

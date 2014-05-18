@@ -198,7 +198,7 @@ public class BlurRenderer {
             RectF rect = new RectF(0.0f, 0.0f, mBitmap.getWidth(), mBitmap.getHeight());
 
             canvas.drawBitmap(mUnblured, canvas.getMatrix(), new Paint());
-            canvas.drawRoundRect(rect, 24, 24, paint);
+            canvas.drawRoundRect(rect,24,24, paint);
             
             Paint mBorderPaint = new Paint();
             mBorderPaint.setStyle(Paint.Style.STROKE);
