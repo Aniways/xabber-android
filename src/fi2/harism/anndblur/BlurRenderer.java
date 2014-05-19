@@ -185,8 +185,6 @@ public class BlurRenderer {
      */
     public void drawToCanvas(Canvas canvas) {
         
-    	
-    	
     	if (mBitmap != null) {
     		
     		BitmapShader shader;
@@ -194,17 +192,44 @@ public class BlurRenderer {
             Paint paint = new Paint();
             paint.setAntiAlias(true);
             paint.setShader(shader);
-
-            RectF rect = new RectF(0.0f, 0.0f, mBitmap.getWidth(), mBitmap.getHeight());
+            
+            RectF rect = new RectF(0.0f, 0.0f, mBitmap.getWidth(), mBitmap.getHeight() - 30);
 
             canvas.drawBitmap(mUnblured, canvas.getMatrix(), new Paint());
-            canvas.drawRoundRect(rect,24,24, paint);
+            //canvas.drawRoundRect(rect,24,24, paint);
+            
+            Path p = new Path();
+            
+            float triangleWidth = 40;
+            float triangleHeight = 30;
+            float triangleCenter = 100; 
+            
+            float r = 24;
+            
+            //L,T,R,B
+            
+            p.moveTo(rect.left, rect.bottom - r); //LB
+            p.arcTo(new RectF(rect.left,rect.top, 2*r, 2*r),180f, 90f); // LB->LT 
+            p.arcTo(new RectF(rect.right - (2*r), rect.top, rect.right, 2*r), 270f, 90f); //LT->RT
+            p.arcTo(new RectF(rect.right - (2*r), rect.bottom - (2*r), rect.right, rect.bottom), 0f, 90f); //RT->RB
+            
+            p.lineTo(triangleCenter + (triangleWidth / 2), rect.bottom);
+            p.lineTo(triangleCenter, rect.bottom + triangleHeight);
+            p.lineTo(triangleCenter - (triangleWidth / 2), rect.bottom);
+            
+            p.arcTo(new RectF(rect.left, rect.bottom - (2*r), 2*r, rect.bottom), 90f, 90f); //RB->LB
+            
+            //p.addRoundRect(rect, 24, 24, Direction.CW);
+            
+            canvas.drawPath(p, paint);
+            
             
             Paint mBorderPaint = new Paint();
             mBorderPaint.setStyle(Paint.Style.STROKE);
             mBorderPaint.setAntiAlias(true);
             mBorderPaint.setColor(Color.BLACK);
-            mBorderPaint.setStrokeWidth(2);
+            mBorderPaint.setStrokeWidth(1);
+            canvas.drawPath(p, mBorderPaint);
             //canvas.drawRoundRect(rect, 24, 24, mBorderPaint);
     		
             // Draw off-screen bitmap using inverse of the scale matrix
@@ -218,7 +243,11 @@ public class BlurRenderer {
     private void drawOffscreenBitmap() {
         // Grab global visible rect for later use
         // mView.getGlobalVisibleRect(mRectVisibleGlobal);
-
+    	
+    	if(mBitmap != null){
+    		return;
+    	}
+    	
         // Calculate scaled off-screen bitmap width and height
         int width = Math.round(mView.getWidth() * BITMAP_SCALE_FACTOR);
         int height = Math.round(mView.getHeight() * BITMAP_SCALE_FACTOR);
