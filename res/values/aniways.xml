@@ -5,7 +5,7 @@
         !!Mandatory config value!!
         Replace placeholder ID with your Aniways App Id
     -->
-    <string name="aniways_appId">ADF4454FDSDF543DFNEWVER</string>
+    <string name="aniways_appId">Event duplicate test</string>
 
     <!--
        !!Mandatory config value!!
