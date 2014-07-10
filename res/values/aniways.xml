@@ -5,7 +5,7 @@
         !!Mandatory config value!!
         Replace placeholder ID with your Aniways App Id
     -->
-    <string name="aniways_appId">Event duplicate test</string>
+    <string name="aniways_appId">XaberVerizon</string>
 
     <!--
        !!Mandatory config value!!
