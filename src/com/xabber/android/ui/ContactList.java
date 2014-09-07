@@ -190,7 +190,6 @@ OnItemClickListener, OnLongClickListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		Application.initAniways(this);
 		if (Intent.ACTION_VIEW.equals(getIntent().getAction())
 				|| Intent.ACTION_SEND.equals(getIntent().getAction())
 				|| Intent.ACTION_SENDTO.equals(getIntent().getAction())

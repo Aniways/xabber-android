@@ -19,7 +19,6 @@ import java.util.Collection;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -42,8 +41,6 @@ public class LoadActivity extends SingleActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		Application.initAniways(this);
-		Log.i("Baaaaaaaaaa", "initializing Anwiways");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.load);
 		animation = AnimationUtils.loadAnimation(this, R.anim.connection);

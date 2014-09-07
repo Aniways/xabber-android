@@ -265,6 +265,8 @@ public class Application extends android.app.Application {
 		super.onCreate();
 		Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
 
+		Aniways.init(this);
+		
 		ArrayList<String> contactManager = new ArrayList<String>();
 		TypedArray contactManagerClasses = getResources().obtainTypedArray(
 				R.array.contact_managers);
@@ -503,13 +505,6 @@ public class Application extends android.app.Application {
 	 */
 	public void runOnUiThreadDelay(final Runnable runnable, long delayMillis) {
 		handler.postDelayed(runnable, delayMillis);
-	}
-
-	public static void initAniways(Context context) {
-		//AniwaysConfiguration.setLogsVerbosity(Verbosity.Off);
-		if(!Aniways.isInit()){
-			Aniways.init(context);
-		}
 	}
 
 }
