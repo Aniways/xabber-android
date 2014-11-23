@@ -18,7 +18,7 @@
     package="com.xabber.android.aniwaysdemo"
     android:versionCode="87"
     android:versionName="@string/application_version"
-    android:installLocation="preferExternal"
+    android:installLocation="auto"
     >
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="17" />
     

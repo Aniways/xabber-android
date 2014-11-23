@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="aniways_appId">VerizonMessagesTest</string>
-	
-	<integer name="aniways_iconInEditTextSize">60</integer>
+    <string name="aniways_appId">TestJson</string>
+	<!--  string name="aniways_appId">VerizonMessagesTest</string-->
+	<!--  -->
+	<integer name="aniways_iconInEditTextSize">30</integer>
 	<integer name="aniways_iconInTextViewSize">60</integer>
-	<integer name="aniways_smallIconSize">30</integer>
 	<integer name="aniways_iconInSuggestionPopupSize">60</integer>
+	
+	<integer name="aniways_smallIconSize">30</integer>
 	
 	<bool name="aniways_useSmallerIconsInIconsOnDemendPopup">true</bool>
     
-    <bool name="aniways_disableCreditStoreBalanceButton">false</bool>        
+    <bool name="aniways_disableCreditStoreBalanceButton">false</bool>
     
-    <bool name="aniways_enable_credits_store">true</bool>
+    <bool name="aniways_useEditTextTutorial">true</bool>
+    
+    <bool name="aniways_enable_credits_store">false</bool>
     <string name="aniways_app_public_key_for_credits_store">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5JLYBl94qquxlO0Ugdan4DF2fSQgF4slZEjMPbzVAqzuGCL0z4scyaXKN2x99vrpDrV+wOVgX50s7vsD3Qym7RRInagCazT0pR4eYZur1gDsCt6nrOO1VktOBvTlme+YHzYkMDp7cFXKjjrb46bEP3EVqdoWFAOASsO5oa/frXkZ7EPeXkPG7pwJM6HPF1BZl3+75J2VrM1VrfUpNLQsc/4qjBGzTSq9I2rdyypndKUy6cjIU+9PH7BAgXwUbCBcKRLylhSuHHvmTqeJiY3J4KOsYgOzbmu8rDknltn/q+qq+h4bRKGfboFqjjCA1sUntuwfXjviUAeJnKc8RGCdgwIDAQAB</string>
     <integer name="aniways_store_initial_credits">100</integer>
     <string name="aniways_100_credits_sku">aniways_100_credits</string>
