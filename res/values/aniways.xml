@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="aniways_appId">TestJson</string>
+    <!-- string name="aniways_appId">testIlona</string-->
+    <string name="aniways_appId">MigMe</string>
+    <!-->string name="aniways_appId">Nimbuzz_4A9D5EB87913466DA9FA42E453ECCE41</string-->
 	<!--  string name="aniways_appId">VerizonMessagesTest</string-->
 	<!--  -->
 	<integer name="aniways_iconInEditTextSize">30</integer>
